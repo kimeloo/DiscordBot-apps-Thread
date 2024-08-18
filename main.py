@@ -1,15 +1,16 @@
 import logging
 logger = logging.getLogger("thread")
 
-def run():
-    # load bot token
-    from . import config
-    config.Config()
+def run(bot):
+    from ..config import Config
+    Config('CHANNEL_DISCUSSION')
 
-    # run bot
-    from . import bot
-    bot_ = bot.ThreadBot()
-    bot_.run()
+    from .events import Events as myevents
+    bot = myevents(bot).add()
+    from .commands import Commands as mycommands
+    bot = mycommands(bot).add()
+
+    return bot
 
 if __name__ == '__main__':
-    run()
+    print('Do not run this file directly')

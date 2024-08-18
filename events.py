@@ -6,7 +6,7 @@ logger = logging.getLogger("event")
 
 class Events():
     def __init__(self, bot):
-        self.__CHANNEL_ID_discussion = os.getenv('CHANNEL_DISCUSSION')
+        self.__CHANNEL_ID_discussion = int(os.getenv('CHANNEL_DISCUSSION'))
         self.bot = bot
     
     def add(self):
@@ -25,7 +25,7 @@ class Events():
             if (channel.name == 'idea') or (channel.parent.name == 'idea'):
                 if emoji.name == "✅":
                     logger.info(f'Reaction {emoji.name} on [{message.content}]')
-                    discussion_channel = bot.get_channel(int(self.__CHANNEL_ID_discussion))
+                    discussion_channel = bot.get_channel(self.__CHANNEL_ID_discussion)
                     new_message = await discussion_channel.send(message.content)
                     thread = await new_message.create_thread(name=message.content, auto_archive_duration=10080)
                     logger.info(f'Created [{message.content}] thread.')
