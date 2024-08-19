@@ -1,5 +1,5 @@
 import logging
-logger = logging.getLogger("thread")
+logger = logging.getLogger(__name__)
 
 def run(bot):
     from ..config import Config

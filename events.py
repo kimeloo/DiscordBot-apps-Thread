@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import os
 import logging
-logger = logging.getLogger("event")
+logger = logging.getLogger(__name__)
 
 class Events():
     def __init__(self, bot):

@@ -1,5 +1,5 @@
 import logging
-logger = logging.getLogger("commands")
+logger = logging.getLogger(__name__)
 
 class Commands():
     def __init__(self, bot):
